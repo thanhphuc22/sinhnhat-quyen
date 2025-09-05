@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
+
+/* ==================================
+   Biến màu cho hiệu ứng Glow
+================================== */
+:root {
+    --glow-primary-color: #c9dc4c; 
+    --glow-secondary-color: #90be6d; 
+    --glow-text-color: #329c51; 
+    --glow-accent-color: #a5dffd; 
+    --glow-blink-color: #ea682c;
+}
+
+/* ==================================
+   Global Styles
+================================== */
+body {
+    font-family: 'Shantell Sans', cursive;
+    margin: 0;
+    padding: 0;
+
+    /* Background mặc định cho desktop */
+    background: linear-gradient(45deg, rgb(250, 218, 97) 0%, rgb(255, 145, 136) 50%, rgb(255, 90, 205) 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================================
+   Hiệu ứng chữ Glow
+================================== */
+.glow {
+    font-size: 4rem;
+    text-align: center;
+    color: var(--glow-text-color);
+    font-family: "Sacramento", cursive;
+    text-shadow: 0 0 5px var(--glow-primary-color),
+                 0 0 15px var(--glow-primary-color),
+                 0 0 20px var(--glow-primary-color),
+                 0 0 40px var(--glow-primary-color),
+                 0 0 60px var(--glow-secondary-color),
+                 0 0 10px var(--glow-accent-color),
+                 0 0 98px var(--glow-secondary-color);
+    animation: blink 12s infinite;
+}
+
+/* Blink Animation */
+@keyframes blink {
+    20%, 24%, 55% {
+        color: var(--glow-blink-color);
+        text-shadow: none;
+    }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 5px var(--glow-primary-color),
+                     0 0 15px var(--glow-primary-color),
+                     0 0 20px var(--glow-primary-color),
+                     0 0 40px var(--glow-primary-color),
+                     0 0 60px var(--glow-secondary-color),
+                     0 0 10px var(--glow-accent-color),
+                     0 0 98px var(--glow-secondary-color);
+        color: var(--glow-text-color);
+    }
+}
+
+/* ==================================
+   Responsive Styles
+================================== */
+
+/* Tablet (màn hình <= 1024px) */
+@media only screen and (max-width: 1024px) {
+    .glow {
+        font-size: 3rem;
+    }
+}
+
+/* Mobile (màn hình <= 767px) */
+@media only screen and (max-width: 767px) {
+    body {
+        background-image: url('./assets/backgroundSmall.jpg');
+        background-size: cover;
+        background-attachment: scroll; /* tránh giật khi cuộn */
+    }
+    .glow {
+        font-size: 2rem;
+        text-shadow: 0 0 3px var(--glow-primary-color),
+                     0 0 10px var(--glow-secondary-color); /* giảm hiệu ứng cho nhẹ */
+    }
+}
